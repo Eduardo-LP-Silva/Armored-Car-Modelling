@@ -18,6 +18,7 @@ serialInclude([
 	'MyChassis.js',
 	'MyTurret.js',
 	'MyWheel.js',
+	'MyMirror.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

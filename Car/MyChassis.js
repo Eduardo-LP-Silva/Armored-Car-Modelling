@@ -19,9 +19,13 @@ class MyChassis extends CGFobject
         this.trap = new MyPrism (scene, 3, 3);
         this.tampo = new MyDisk(scene, 3);
         this.roof =  new MyUnitCubeQuad(scene);
-        this.glass = new MyUnitCubeQuad(scene);
-        this.roda = new MyCylinder (scene, 20, 2);
 
+        
+        this.camo = new CGFappearance(scene);
+        this.camo.loadTexture("../resources/images/Camo.jpg");
+
+        this.underCarriage = new CGFappearance(scene);
+        this.underCarriage.loadTexture("../resources/images/black.png");
     };
 
     display()
@@ -29,13 +33,8 @@ class MyChassis extends CGFobject
         //Floor
         this.scene.pushMatrix();
             this.scene.scale(2,0.1,5,1);
+            this.underCarriage.apply();
             this.floor.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-            this.scene.scale(2,0.1,1,1);
-            this.scene.translate(0, 16.4, 2, 1);
-            //this.floor.display();
         this.scene.popMatrix();
 
         //Sides
@@ -45,6 +44,7 @@ class MyChassis extends CGFobject
             this.scene.translate(0.85, 0, 0.845, 1);
             this.scene.scale(0.15, 1.68, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -125,23 +125,6 @@ class MyChassis extends CGFobject
             this.scene.translate(0.5,0.5,0.5, 1);
             this.roof.display();
         this.scene.popMatrix();
-
-        //Glass
-       /* this.scene.pushMatrix();
-            this.scene.scale(2, 1.3, 0.1, 1);
-            this.scene.translate(0, 1.5, 15, 1);
-            this.glass.display();
-        this.scene.popMatrix(); */
-
-                //RODAS
-                /*
-		this.scene.pushMatrix();
-			this.scene.scale(0.5, 0.5, 0.5, 1);
-			this.scene.rotate(Math.PI/2, 0,1,0);
-			this.scene.translate(0, 1.5, 2, 1); //fix
-            this.roda.display();
-        this.scene.popMatrix(); */
-
     };
 
 }

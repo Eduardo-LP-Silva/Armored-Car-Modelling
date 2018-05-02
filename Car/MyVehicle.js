@@ -15,6 +15,9 @@ class MyVehicle extends CGFobject
         this.support = new MyUnitCubeQuad(scene);
         this.mirror = new MyMirror(scene);
         this.wheel = new MyWheel(scene);
+
+        this.metal = new CGFappearance(scene);
+        this.metal.loadTexture("../resources/images/darkMetal.jpg");
     };
 
     display()
@@ -48,6 +51,7 @@ class MyVehicle extends CGFobject
             this.scene.translate(-1,1.1,1.5);
             this.scene.scale(0.2,0.05,0.05);
             this.scene.translate(0.5, 0.5, 0.5);
+            this.metal.apply();
             this.support.display();  
         this.scene.popMatrix();
 
@@ -56,6 +60,7 @@ class MyVehicle extends CGFobject
             this.scene.translate(0.8,1.1,1.5);
             this.scene.scale(0.2,0.05,0.05);
             this.scene.translate(0.5, 0.5, 0.5);
+            this.metal.apply();
             this.support.display();  
         this.scene.popMatrix();
 

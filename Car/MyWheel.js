@@ -13,6 +13,9 @@ class MyWheel extends CGFobject
         this.axis = new MyDisk(scene, 12);
         this.tire = new MyCylinder(scene, 12, 6);
 
+        this.wheel = new CGFappearance(scene);
+        this.wheel.loadTexture("../resources/images/wheel.png");
+
     };
 
     display()
@@ -29,6 +32,7 @@ class MyWheel extends CGFobject
             this.scene.translate(0,0,0.35);
             this.scene.scale(0.5,0.5,0.07);
             this.scene.translate(0.5,0.5,0.5);
+            this.wheel.apply();
             this.axis.display();
         this.scene.popMatrix();
 

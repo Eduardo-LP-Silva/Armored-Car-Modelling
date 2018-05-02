@@ -22,10 +22,11 @@ class MyChassis extends CGFobject
 
         
         this.camo = new CGFappearance(scene);
-        this.camo.loadTexture("../resources/images/Camo.jpg");
+        this.camo.loadTexture("../resources/images/Camo.png");
 
         this.underCarriage = new CGFappearance(scene);
-        this.underCarriage.loadTexture("../resources/images/black.png");
+        this.underCarriage.loadTexture("../resources/images/darkMetal.jpg");
+
     };
 
     display()

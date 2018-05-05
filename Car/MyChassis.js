@@ -20,12 +20,15 @@ class MyChassis extends CGFobject
         this.tampo = new MyDisk(scene, 3);
         this.roof =  new MyUnitCubeQuad(scene);
 
-        
+
         this.camo = new CGFappearance(scene);
         this.camo.loadTexture("../resources/images/Camo.png");
 
         this.underCarriage = new CGFappearance(scene);
         this.underCarriage.loadTexture("../resources/images/darkMetal.jpg");
+
+				this.AmbTrap = new CGFappearance(scene);
+				this.AmbTrap.loadTexture("../resources/images/Camo.png");
 
     };
 
@@ -94,6 +97,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(Math.PI/2, 0,1,0);
+						this.AmbTrap.apply();
             this.trap.display();
         this.scene.popMatrix();
 

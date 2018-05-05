@@ -16,6 +16,9 @@ class MyWheel extends CGFobject
         this.wheel = new CGFappearance(scene);
         this.wheel.loadTexture("../resources/images/wheel.png");
 
+				this.AmbTire = new CGFappearance(scene);
+				this.AmbTire.loadTexture("../resources/images/black.png");
+
     };
 
     display()
@@ -24,6 +27,7 @@ class MyWheel extends CGFobject
         this.scene.pushMatrix();
             this.scene.scale(0.5,0.5,0.07);
             this.scene.translate(0.5,0.5,0.5);
+						this.AmbTire.apply();
             this.tire.display();
         this.scene.popMatrix();
 

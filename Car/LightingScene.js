@@ -29,6 +29,7 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		this.car = new MyVehicle(this);
+		this.ch = new MyTerrain(this);
 
 		this.setUpdatePeriod(100);
 	};
@@ -50,7 +51,7 @@ class LightingScene extends CGFscene
 		this.lights[3].setPosition(0,6,5,1);
 		this.lights[3].setVisible(true);
 
-		this.lights[1].setPosition(0, -6.0, 0, 1.0);
+		this.lights[1].setPosition(0, 6.0, 0, 1.0);
 		this.lights[1].setVisible(true); // show marker on light position (different from enabled)
 
 		this.lights[2].setPosition(5, 6.0, 0, 1.0);
@@ -58,7 +59,7 @@ class LightingScene extends CGFscene
 
 		this.lights[4].setPosition(-5, 6, 0);
 		this.lights[4].setVisible(true);
-	
+
 
 		this.lights[0].setAmbient(0, 0, 0, 1);
 		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
@@ -67,21 +68,24 @@ class LightingScene extends CGFscene
 
 		this.lights[1].setAmbient(0, 0, 0, 1);
 		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
+		this.lights[1].setSpecular(1,1,1,1);
 
+		this.lights[2].setAmbient(0, 0, 0, 1);
+		this.lights[2].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[2].setSpecular(1,1,1,1);
-		this.lights[2].setConstantAttenuation(0);
-		this.lights[2].setLinearAttenuation(1);
-		this.lights[2].setQuadraticAttenuation(0);
-
-		this.lights[3].setConstantAttenuation(0);
-		this.lights[3].setLinearAttenuation(0);
-		this.lights[3].setQuadraticAttenuation(1);
+		// this.lights[2].setConstantAttenuation(0);
+		// this.lights[2].setLinearAttenuation(1);
+		// this.lights[2].setQuadraticAttenuation(0);
+		//
+		// this.lights[3].setConstantAttenuation(0);
+		// this.lights[3].setLinearAttenuation(0);
+		// this.lights[3].setQuadraticAttenuation(1);
 
 		this.lights[3].setAmbient(0, 0, 0, 1);
 		this.lights[3].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[3].setSpecular(1,1,1,1);
 
-		this.lights[4].setAmbient(0.4, 0.4, 0.4, 1);
+		this.lights[4].setAmbient(0, 0, 0, 1);
 		this.lights[4].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[4].setSpecular(1,1,1,1);
 
@@ -90,7 +94,7 @@ class LightingScene extends CGFscene
 		this.lights[2].enable();
 		this.lights[3].enable();
 		this.lights[4].enable();
-		
+
 	};
 
 	updateLights()
@@ -101,7 +105,7 @@ class LightingScene extends CGFscene
 
 	update(currTime)
 	{
-		
+
 	}
 
 	display()
@@ -110,6 +114,7 @@ class LightingScene extends CGFscene
 
 		// Clear image and depth buffer everytime we update the scene
 		this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
+		this.gl.clearColor(0.0, 0.5, 1, 1.0);
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
 		// Initialize Model-View matrix as identity (no transformation)
@@ -132,6 +137,7 @@ class LightingScene extends CGFscene
 		// ---- BEGIN Scene drawing section
 
 		this.car.display();
+		this.ch.display();
 
 		// ---- END Scene drawing section
 	};

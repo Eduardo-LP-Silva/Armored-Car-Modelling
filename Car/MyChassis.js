@@ -26,10 +26,6 @@ class MyChassis extends CGFobject
 
         this.underCarriage = new CGFappearance(scene);
         this.underCarriage.loadTexture("../resources/images/darkMetal.jpg");
-
-				this.AmbTrap = new CGFappearance(scene);
-				this.AmbTrap.loadTexture("../resources/images/Camo.png");
-
     };
 
     display()
@@ -57,6 +53,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0, 0.845, 1);
             this.scene.scale(0.15, 1.68, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -65,6 +62,7 @@ class MyChassis extends CGFobject
             this.scene.translate(0.85, 0, -2.5, 1);
             this.scene.scale(0.15, 1.68, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -73,6 +71,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0, -2.5, 1);
             this.scene.scale(0.15, 1.68, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -81,6 +80,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0, -0.84, 1);
             this.scene.scale(0.15, 1.3, 1.7, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -89,6 +89,7 @@ class MyChassis extends CGFobject
             this.scene.translate(0.85, 0, -0.84, 1);
             this.scene.scale(0.15, 1.3, 1.7, 1);
             this.scene.translate(0.5,0.5,0.5,1);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -97,7 +98,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(Math.PI/2, 0,1,0);
-						this.AmbTrap.apply();
+			this.camo.apply();
             this.trap.display();
         this.scene.popMatrix();
 
@@ -106,6 +107,7 @@ class MyChassis extends CGFobject
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(-Math.PI/2, 0,1,0);
             this.scene.rotate(Math.PI, 0,0,1);
+            this.camo.apply();
             this.tampo.display();
         this.scene.popMatrix();
 
@@ -113,6 +115,7 @@ class MyChassis extends CGFobject
             this.scene.translate(1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(Math.PI/2, 0,1,0);
+            this.camo.apply();
             this.tampo.display();
         this.scene.popMatrix();
 
@@ -120,6 +123,7 @@ class MyChassis extends CGFobject
         this.scene.pushMatrix();
             this.scene.scale(2, 1.68, 0.1, 1);
             this.scene.translate(0, 0.5,-24.5, 1);
+            this.camo.apply();
             this.back.display();
         this.scene.popMatrix();
 
@@ -128,6 +132,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 1.58, -2.5, 1);
             this.scene.scale(2, 0.1, 5, 1);
             this.scene.translate(0.5,0.5,0.5, 1);
+            this.camo.apply();
             this.roof.display();
         this.scene.popMatrix();
     };

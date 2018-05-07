@@ -14,6 +14,11 @@ class MyTurret extends CGFobject
         this.barrel = new MyCylinder(scene, 12, 6);
         this.side = new MyUnitCubeQuad(scene);
 
+        this.metal = new CGFappearance(scene);
+        this.metal.loadTexture("../resources/images/darkMetal.jpg");
+
+        this.camo = new CGFappearance(scene);
+        this.camo.loadTexture("../resources/images/Camo.png");
     };
 
     display()
@@ -22,6 +27,7 @@ class MyTurret extends CGFobject
         this.scene.pushMatrix();
             this.scene.scale(0.6, 0.3, 0.6);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.base.display();
         this.scene.popMatrix();
 
@@ -30,6 +36,7 @@ class MyTurret extends CGFobject
             this.scene.translate(0.8,0,0);
             this.scene.scale(0.2, 0.3, 0.6);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -38,6 +45,7 @@ class MyTurret extends CGFobject
             this.scene.translate(-0.4,0,0);
             this.scene.scale(0.2, 0.3, 0.6);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -47,6 +55,7 @@ class MyTurret extends CGFobject
             this.scene.translate(0.6,0,0);
             this.scene.scale(0.2, 0.3, 0.2);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -55,6 +64,7 @@ class MyTurret extends CGFobject
             this.scene.translate(-0.2,0,0);
             this.scene.scale(0.2, 0.3, 0.2);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -63,6 +73,7 @@ class MyTurret extends CGFobject
             this.scene.translate(0.6,0.2,0.2);
             this.scene.scale(0.2, 0.1, 0.4);
             this.scene.translate(0.5,0.5,0.5);
+            this.camo.apply();
             this.side.display();
         this.scene.popMatrix();
 
@@ -71,6 +82,7 @@ class MyTurret extends CGFobject
              this.scene.translate(-0.2,0.2,0.2);
              this.scene.scale(0.2, 0.1, 0.4);
              this.scene.translate(0.5,0.5,0.5);
+             this.camo.apply();
             this.side.display();
          this.scene.popMatrix();
 
@@ -79,6 +91,7 @@ class MyTurret extends CGFobject
             this.scene.translate(0.27,0.1,0.25,1);
             this.scene.scale(0.1, 0.1, 0.6);
             this.scene.translate(0.5,0.5,0.5);
+            this.metal.apply();
             this.barrel.display();
         this.scene.popMatrix();
     };

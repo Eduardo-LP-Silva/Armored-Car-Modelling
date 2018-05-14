@@ -34,6 +34,9 @@ class LightingScene extends CGFscene
 		this.car = new MyVehicle(this);
 		this.ch = new MyTerrain(this);
 
+		// this.try = new MyLamp(this);
+		// this.tryN = new MyLamps(this);
+
 		this.setUpdatePeriod(100);
 	};
 
@@ -138,11 +141,22 @@ class LightingScene extends CGFscene
 		this.car.display();
 		this.ch.display();
 
+		// this.scene.pushMatrix();
+		// this.scene.translate(1, 0.81, 4, 1);
+		//this.try.display();
+		// this.scene.popMatrix();
+		//
+		// this.scene.pushMatrix();
+		// this.scene.translate(5, 0.81, 4, 1);
+		//this.tryN.display();
+		//this.scene.popMatrix();
+
+
 		// ---- END Scene drawing section
 	};
 
 	doSomething()
-	{ 
-		console.log("Doing something..."); 
+	{
+		console.log("Doing something...");
 	};
 };

@@ -102,14 +102,14 @@ class MyVehicle extends CGFobject
 
 				//Rigth lamp
 				this.scene.pushMatrix();
-					this.scene.translate(0.5, 0.74, 2.8, 1);
+					this.scene.translate(0.5, 1, 5, 1);
 					this.scene.rotate(-Math.PI / 3, 1, 0, 0);
 					this.lamp.display();
 				this.scene.popMatrix();
 
 				//Left lamp
 				this.scene.pushMatrix();
-					this.scene.translate(-0.5, 0.74, 2.8, 1);
+					this.scene.translate(-0.5, 1, 5, 1);
 					this.scene.rotate(-Math.PI / 3, 1, 0, 0);
 					this.lamp.display();
 				this.scene.popMatrix();

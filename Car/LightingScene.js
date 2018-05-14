@@ -33,6 +33,7 @@ class LightingScene extends CGFscene
 
 		this.car = new MyVehicle(this);
 		this.ch = new MyTerrain(this);
+		this.testWheel = new MyWheel(this);
 
 		// this.try = new MyLamp(this);
 		// this.tryN = new MyLamps(this);
@@ -106,7 +107,7 @@ class LightingScene extends CGFscene
 
 	update(currTime)
 	{
-
+		this.checkKeys(currTime);
 	}
 
 	display()
@@ -138,7 +139,13 @@ class LightingScene extends CGFscene
 
 		// ---- BEGIN Scene drawing section
 
-		this.car.display();
+		this.pushMatrix();
+			//this.translate(0,0,5);
+			this.car.display();
+		this.popMatrix();
+
+		//this.testWheel.display();
+
 		this.ch.display();
 
 		// this.scene.pushMatrix();
@@ -159,4 +166,33 @@ class LightingScene extends CGFscene
 	{
 		console.log("Doing something...");
 	};
+
+	checkKeys(currTime)
+	{
+		var text="Keys pressed: ";
+		var keysPressed=false;
+
+		if (this.gui.isKeyPressed("KeyW"))
+		{
+			text+=" W ";
+			keysPressed=true;
+			//this.car.wheel.advance(10, currTime);
+			
+			this.translate(0,0,2);
+			this.car.display();
+			
+			//this.rotate(this.car.wheel.ang, 1, 0, 0);
+		
+		}
+
+		if (this.gui.isKeyPressed("KeyS"))
+		{
+			text+=" S ";
+			keysPressed=true;
+		}
+
+		if (keysPressed)
+			console.log(text);
+	};
+
 };

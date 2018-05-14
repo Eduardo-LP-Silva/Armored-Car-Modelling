@@ -26,7 +26,7 @@ class MyPrism extends CGFobject
         this.vertices = [];
         this.indices = [];
         this.normals = [];
-		//this.texCoords = [];
+				//this.texCoords = [];
 
         ang_og = 2*Math.PI / this.slices;
 
@@ -41,7 +41,7 @@ class MyPrism extends CGFobject
                 this.normals.push(Math.cos(ang + ang_og/2), Math.sin(ang +ang_og / 2), 0);
             }
 
-            //this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.slices, 
+            //this.texCoords.push(this.minS + ang * (this.maxS - this.minS) / this.slices,
                 //this.minT + i * (this.maxT - this.minT) / this.stacks);
         }
 

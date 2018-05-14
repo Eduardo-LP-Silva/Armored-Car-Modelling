@@ -6,11 +6,12 @@
 
 class MyLamp extends CGFobject
 {
-	constructor(scene, slices, stacks)
+	constructor(scene, slices, stacks, radius)
 	{
         super(scene);
         this.slices = slices; //longitude slices
-        this.stacks = stacks; //Latitude stack
+        this.stacks = stacks; //Latitude stacks
+        this.radius = radius;
 
 		    this.initBuffers();
 	};
@@ -20,34 +21,43 @@ class MyLamp extends CGFobject
    this.vertices = [];
    this.normals = [];
    this.indices = [];
-   this.texCoords = [];
 
-   var ang = 2*Math.PI/this.slices;
-    
-   var decrease = 1;
-   var i, j;
+   this.theta = (Math.PI/2) / this.slices; //i
+   this.alpha = 2*Math.PI / this.stacks; //j
 
-   for(i = 0; i < this.stacks; i++, decrease -= 1)
-    {
-      for(j = 0; j < this.slices; j++)
-      {
-        this.vertices.push(Math.cos(ang* j)*decrease,Math.sin(ang * j)*decrease, i);
-        this.normals.push(Math.cos(ang * j)*decrease, Math.sin(ang * j)*decrease, 0);
-        this.texCoords.push(this.minS + j * (this.maxS - this.minS) / this.slices,
-          this.minT + i * (this.maxT - this.minT) / this.stacks);
-      }
 
-    }
+   for(var j = 0; j <= this.stacks; j++)
+   {
+     for(var i = 0; i < this.slices; i++)
+     {
 
-    for(i = 0; i <= this.stacks * this.slices -1 - this.slices; i++)
-    {
-        this.indices.push(i, i + this.slices, i + this.slices - 1);
-        this.indices.push(i, i + this.slices - 1, i + this.slices);
-        this.indices.push(i, i + 1, i + this.slices);
-        this.indices.push(i, i + this.slices, i + 1);
-    }
-  
- 	  this.primitiveType = this.scene.gl.TRIANGLES;
- 	  this.initGLBuffers();
-  };
+        // x = r sinθ cosα
+        // y = r cosθ
+        // z = r sinθ sinα
+
+        this.vertices.push( this.radius*Math.cos(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.sin(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.cos(this.theta*i) );
+        this.normals.push( this.radius*Math.cos(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.sin(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.cos(this.theta*i) );
+     }
+   }
+
+	 //Draw triangles
+	   for(j = 0; j < this.stacks; j++)
+		 {
+	     for(i = 0; i < this.slices; i++)
+			 {
+	       //First
+	       this.indices.push(this.slices*j+i);
+	       this.indices.push(this.slices*j+i+1-(i < this.slices-1 ? 0 : this.slices));
+	       this.indices.push(this.slices*(j+1)+i+1-(i < this.slices-1 ? 0 : this.slices));
+	       //Second
+	       this.indices.push(this.slices*(j+1)+i+1-(i < this.slices-1 ? 0 : this.slices));
+	       this.indices.push(this.slices*(j+1)+i);
+	       this.indices.push(this.slices*j+i);
+	     }
+	   }
+
+
+ 	this.primitiveType = this.scene.gl.TRIANGLES;
+ 	this.initGLBuffers();
+ };
 };

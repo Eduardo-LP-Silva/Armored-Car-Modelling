@@ -98,7 +98,7 @@ class MyChassis extends CGFobject
             this.scene.translate(-1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(Math.PI/2, 0,1,0);
-			this.camo.apply();
+						//this.camo.apply();
             this.trap.display();
         this.scene.popMatrix();
 
@@ -107,7 +107,7 @@ class MyChassis extends CGFobject
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(-Math.PI/2, 0,1,0);
             this.scene.rotate(Math.PI, 0,0,1);
-            this.camo.apply();
+            //this.camo.apply();
             this.tampo.display();
         this.scene.popMatrix();
 
@@ -115,7 +115,7 @@ class MyChassis extends CGFobject
             this.scene.translate(1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
             this.scene.rotate(Math.PI/2, 0,1,0);
-            this.camo.apply();
+            //this.camo.apply();
             this.tampo.display();
         this.scene.popMatrix();
 

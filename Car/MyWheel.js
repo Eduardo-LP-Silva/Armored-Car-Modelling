@@ -32,6 +32,7 @@ class MyWheel extends CGFobject
     {
         //Tire
         this.scene.pushMatrix();
+            this.scene.rotate(this.ang, 1, 0, 0);
             this.scene.rotate(Math.PI / 2, 0, 1, 0);
             this.scene.scale(0.5,0.5,0.07);
 			this.AmbTire.apply();
@@ -40,6 +41,7 @@ class MyWheel extends CGFobject
 
         //Axis
         this.scene.pushMatrix();
+            this.scene.rotate(this.ang, 1, 0, 0);
             this.scene.rotate(Math.PI / 2, 0, 1, 0);
             this.scene.translate(0,0,0.35);
             this.scene.scale(0.5,0.5,0.07);
@@ -49,6 +51,7 @@ class MyWheel extends CGFobject
 
         //Inside Wheel
         this.scene.pushMatrix();
+            this.scene.rotate(this.ang, 1, 0, 0);
             this.scene.rotate(Math.PI / 2, 0, 1, 0);
             this.scene.scale(0.5,0.5,0.07);
             this.black.apply();
@@ -59,9 +62,11 @@ class MyWheel extends CGFobject
     advance(velocity, currTime)
     {
         if(this.lastUpdateTime == -1)
-            this.lastUpdateTime = currTime;
+            this.ang = 0.1;
+        else
+            this.ang = velocity * ((currTime - this.lastUpdateTime) / 1000) / this.radius;
 
-        this.ang = velocity * ((currTime - this.lastUpdateTime) / 1000) / this.radius;
+        this.lastUpdateTime = currTime;
     };
 
 }

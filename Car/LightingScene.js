@@ -176,23 +176,23 @@ class LightingScene extends CGFscene
 		{
 			text+=" W ";
 			keysPressed=true;
-			//this.car.wheel.advance(10, currTime);
-			
-			this.translate(0,0,2);
-			this.car.display();
-			
-			//this.rotate(this.car.wheel.ang, 1, 0, 0);
-		
+			this.car.wheel.advance(this.car.velocity, currTime);
+			this.car.advance(currTime);
 		}
+		else
+			if (this.gui.isKeyPressed("KeyS"))
+			{
+				text+=" S ";
+				keysPressed=true;
 
-		if (this.gui.isKeyPressed("KeyS"))
-		{
-			text+=" S ";
-			keysPressed=true;
-		}
+				this.car.wheel.advance(-this.car.velocity, currTime);
+				this.car.pullBack(currTime);
+			}
+			else
+				this.car.lastUpdatedTime = -1;
 
-		if (keysPressed)
-			console.log(text);
+		/*if (keysPressed)
+			console.log(text); */
 	};
 
 };

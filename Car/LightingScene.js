@@ -18,6 +18,17 @@ class LightingScene extends CGFscene
 
 		this.speed=3;
 		this.drawAxis = true;
+		//example for nrDivs = 8 -> grid of 9x9 vertices
+		this.altimetry= [[ 2.0 , 3.0 , 1.0, 4.0, 2.5, 2.4, 2.3, 1.3 ],
+		[ 2.0 , 3.0 , 2.0, 4.0, 3.5, 6.4, 4.3, 1.3 ],
+		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+		[ 0.0 , 0.0 , 2.0, 4.0, 2.5, 2.4, 0.0, 0.0 ],
+		[ 0.0 , 0.0 , 2.0, 4.0, 3.5, 2.4, 0.0, 0.0 ],
+		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
+		[ 2.0 , 3.0 , 2.0, 1.0, 2.5, 2.4, 2.3, 1.3 ]
+	];
 
 		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 		this.gl.clearDepth(100.0);
@@ -32,11 +43,8 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		this.car = new MyVehicle(this);
-		this.ch = new MyTerrain(this);
+		this.ch = new MyTerrain(this, 8, this.altimetry);
 		this.testWheel = new MyWheel(this);
-
-		// this.try = new MyLamp(this);
-		// this.tryN = new MyLamps(this);
 
 		this.setUpdatePeriod(10);
 	};
@@ -193,7 +201,7 @@ class LightingScene extends CGFscene
 
 		if(this.gui.isKeyPressed("KeyA"))
 		{
-			
+
 		}
 
 		/*if (keysPressed)

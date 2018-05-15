@@ -191,6 +191,11 @@ class LightingScene extends CGFscene
 			else
 				this.car.lastUpdatedTime = -1;
 
+		if(this.gui.isKeyPressed("KeyA"))
+		{
+			
+		}
+
 		/*if (keysPressed)
 			console.log(text); */
 	};

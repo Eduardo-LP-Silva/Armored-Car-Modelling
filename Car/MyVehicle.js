@@ -144,4 +144,11 @@ class MyVehicle extends CGFobject
         this.lastUpdatedTime = currTime;
     }
 
+    turn(currTime, angle)
+    {
+        if(this.lastUpdatedTime == -1)
+            this.angle += 0.1;
+        
+    }
+
 }

@@ -24,6 +24,8 @@ class MyVehicle extends CGFobject
         this.metal.loadTexture("../resources/images/darkMetal.jpg");
     };
 
+
+
     display()
     {
         //Chassis
@@ -35,28 +37,28 @@ class MyVehicle extends CGFobject
         this.scene.popMatrix();
 
         //Turret
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(-0.3, 1.35, 1.5);
             this.turret.display();
         this.scene.popMatrix();
 
         //Left Mirror
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(1, 2.1, 3.5);
             this.mirror.display();
         this.scene.popMatrix();
 
         //Right Mirror
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(-1, 2.1, 3.5);
             this.mirror.display();
         this.scene.popMatrix();
 
         //Right Mirror Support
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(-1,1.1,3.5);
             this.scene.scale(0.2,0.05,0.05);
@@ -66,7 +68,7 @@ class MyVehicle extends CGFobject
         this.scene.popMatrix();
 
         //Left Mirror Support
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(0.8,1.1,3.5);
             this.scene.scale(0.2,0.05,0.05);
@@ -76,14 +78,14 @@ class MyVehicle extends CGFobject
         this.scene.popMatrix();
 
         //Front Left Wheel
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(0.8,0.25,3.5);
             this.wheel.display();
         this.scene.popMatrix();
 
         //Front Rigth Wheel
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(-0.8,0.25,3.5);
             this.scene.rotate(- Math.PI, 0,1,0);
@@ -91,14 +93,14 @@ class MyVehicle extends CGFobject
         this.scene.popMatrix();
 
         //Back Left Wheel
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(0.8,0.25, 0.8);
             this.wheel.display();
         this.scene.popMatrix();
 
         //Back Rigth Wheel
-        this.scene.pushMatrix()
+        this.scene.pushMatrix();
             this.scene.translate(0, 0, this.travelDistance);
             this.scene.translate(-0.8,0.25, 0.8);
             this.scene.rotate(- Math.PI, 0,1,0);

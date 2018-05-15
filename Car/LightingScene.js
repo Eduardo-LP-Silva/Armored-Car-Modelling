@@ -38,7 +38,7 @@ class LightingScene extends CGFscene
 		// this.try = new MyLamp(this);
 		// this.tryN = new MyLamps(this);
 
-		this.setUpdatePeriod(100);
+		this.setUpdatePeriod(10);
 	};
 
 	initCameras()

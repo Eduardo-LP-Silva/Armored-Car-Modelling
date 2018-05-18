@@ -21,7 +21,8 @@ class MyVehicle extends CGFobject
         this.turret = new MyTurret(scene);
         this.support = new MyUnitCubeQuad(scene);
         this.mirror = new MyMirror(scene);
-        this.wheel = new MyWheel(scene);
+        this.frontWheel = new MyWheel(scene);
+        this.backWheel = new MyWheel(scene);
         this.light = new MyLamp(scene, 12, 2);
 		this.lamp = new MyLamp(scene, 20, 20, 0.25);
         this.metal = new CGFappearance(scene);
@@ -35,6 +36,7 @@ class MyVehicle extends CGFobject
         this.scene.translate(this.travelDistanceX, 0, this.travelDistanceZ);
         this.scene.rotate(this.turnAngle, 0, 1, 0);
         this.scene.rotate(Math.PI / 2, 0, 1, 0);
+        this.scene.translate(0, 0.25, 0);
 
             //Chassis
             this.scene.pushMatrix();
@@ -82,27 +84,27 @@ class MyVehicle extends CGFobject
             //Front Left Wheel
             this.scene.pushMatrix();
                 this.scene.translate(0.8,0.25,3.5);
-                this.wheel.display();
+                this.frontWheel.display();
             this.scene.popMatrix();
 
             //Front Rigth Wheel
             this.scene.pushMatrix();
                 this.scene.translate(-1.15,0.25,3.5);
                 //this.scene.rotate(- Math.PI, 0,1,0);
-                this.wheel.display();
+                this.frontWheel.display();
             this.scene.popMatrix();
 
             //Back Left Wheel
             this.scene.pushMatrix();
                 this.scene.translate(0.8,0.25, 0.8);
-                this.wheel.display();
+                this.backWheel.display();
             this.scene.popMatrix();
 
             //Back Rigth Wheel
             this.scene.pushMatrix();
                 this.scene.translate(-1.15,0.25, 0.8);
                 //this.scene.rotate(- Math.PI, 0,1,0);
-                this.wheel.display();
+                this.backWheel.display();
             this.scene.popMatrix();
 
             //Rigth lamp
@@ -134,9 +136,10 @@ class MyVehicle extends CGFobject
             
             this.travelDistanceX += Math.cos(this.turnAngle) * this.velocity * deltaT;
             this.travelDistanceZ -= Math.sin(this.turnAngle) * this.velocity * deltaT;
+            this.frontWheel.advance(this.velocity, currTime);
+            this.frontWheel.turningAngle = 0;
+            this.backWheel.advance(this.velocity, currTime);
         }
-
-        
 
         this.lastUpdatedTime = currTime;
     };
@@ -156,9 +159,16 @@ class MyVehicle extends CGFobject
             var deltaT = ((currTime - this.lastUpdatedTurningTime) / 1000);
 
             if(right)
+            {
                 this.turnAngle -= 2 / Math.PI  * Math.pow(deltaT, 2) + deltaT;
+                this.frontWheel.turningAngle = - Math.PI / 6;
+            }
             else
+            {
                 this.turnAngle += 2 / Math.PI  * Math.pow(deltaT, 2) + deltaT;
+                this.frontWheel.turningAngle = Math.PI / 6;
+            }
+                
         }
 
         this.lastUpdatedTurningTime = currTime;

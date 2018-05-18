@@ -57,14 +57,14 @@ class Plane extends CGFobject{
 				//var zCoord = this.altimetry[j][i] + this.patchLength;
 
 				if(j != this.nrDivs && i != this.nrDivs)
-					{
-						this.vertices.push(xCoord, yCoord, this.altimetry[j][i] * this.patchLength);
-						console.log(this.altimetry[j][i]);
-					}
-					else {
-						this.vertices.push(xCoord, yCoord, 0);
-					}
-
+				{
+					this.vertices.push(xCoord, yCoord, this.altimetry[j][i] * this.patchLength);
+					//console.log(this.altimetry[j][i]);
+				}
+				else 
+				{
+					this.vertices.push(xCoord, yCoord, 0);
+				}
 
 				// As this plane is being drawn on the xy plane, the normal to the plane will be along the positive z axis.
 				// So all the vertices will have the same normal, (0, 0, 1).
@@ -73,12 +73,13 @@ class Plane extends CGFobject{
 
 				// texCoords should be computed here; uncomment and fill the blanks
 
-				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.nrDivs,
+				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.nrDivs, 
 										this.minT + j * (this.maxT - this.minT) / this.nrDivs);
 
 				xCoord += this.patchLength;
 				//zCoord += this.patchLength;
 			}
+
 			yCoord -= this.patchLength;
 		}
 
@@ -106,6 +107,7 @@ class Plane extends CGFobject{
 
 				ind++;
 			}
+			
 			if (j+1 < this.nrDivs)
 			{
 				// Extra vertices to create degenerate triangles so that the strip can wrap on the next row

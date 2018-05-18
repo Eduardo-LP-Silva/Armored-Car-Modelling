@@ -23,8 +23,8 @@ class MyTerrain extends CGFobject
     {
         //ground
         this.scene.pushMatrix();
-            this.scene.scale(20,20,20);
-            this.scene.translate(0,-0.005,0);
+            //this.scene.translate(0,-0.09,0);
+            this.scene.scale(100,10,70);
             this.scene.rotate(-Math.PI/2, 1, 0, 0);
             this.texAmb.apply();
             this.ground.display();

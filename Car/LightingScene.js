@@ -18,16 +18,16 @@ class LightingScene extends CGFscene
 
 		this.speed=3;
 		this.drawAxis = true;
-		//example for nrDivs = 8 -> grid of 9x9 vertices
-		this.altimetry= [[ 2.0 , 3.0 , 1.0, 4.0, 2.5, 2.4, 2.3, 1.3 ],
-		[ 2.0 , 3.0 , 2.0, 4.0, 3.5, 6.4, 4.3, 1.3 ],
-		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-		[ 0.0 , 0.0 , 2.0, 4.0, 2.5, 2.4, 0.0, 0.0 ],
-		[ 0.0 , 0.0 , 2.0, 4.0, 3.5, 2.4, 0.0, 0.0 ],
-		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-		[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-		[ 2.0 , 3.0 , 2.0, 1.0, 2.5, 2.4, 2.3, 1.3 ]
+
+		this.altimetry= [[ 2.0 , 6.0 , 4.0, 5.0, 10.0, 7.0, 2.3, 1.3 ],
+		[ 2.0 , 3.0 , 0.0, 0.0, 0.0, 0.0, 4.3, 1.3 ],
+		[ 4.0 , 6.0 , 0.0, 0.0, 0.0, 0.0, 8.6, 2.6 ],
+		[ 2.6 , 4.0 , 0.0, 0.0, 0.0, 0.0, 5.7, 1.7 ],
+		[ 5.2 , 8.0 , 0.0, 0.0, 0.0, 0.0, 11.4, 3.4 ],
+		[ 3.5 , 5.3 , 0.0, 0.0, 0.0, 0.0, 7.6, 2.3 ],
+		[ 7.0 , 10.6 , 0.0, 0.0, 0.0, 0.0, 15.2, 4.6 ],
+		[ 4.7 , 7.1 , 0.0, 0.0, 0.0, 0.0, 10.1, 3.1 ],
+		[ 2.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 2.3, 1.3 ]
 	];
 
 		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -182,7 +182,6 @@ class LightingScene extends CGFscene
 		{
 			this.car.velocity = 5;
 
-			this.car.wheel.advance(this.car.velocity, currTime);
 			this.car.advance(currTime);
 		}
 		else
@@ -190,7 +189,6 @@ class LightingScene extends CGFscene
 			{
 				this.car.velocity = -5;
 				
-				this.car.wheel.advance(this.car.velocity, currTime);
 				this.car.advance(currTime);
 			}
 			else

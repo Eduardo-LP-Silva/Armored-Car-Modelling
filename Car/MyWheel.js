@@ -73,10 +73,4 @@ class MyWheel extends CGFobject
 
         this.lastUpdateTime = currTime;
     };
-
-    turn(angle, right)
-    {
-        
-    };
-
 }

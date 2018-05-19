@@ -16,7 +16,6 @@ class LightingScene extends CGFscene
 
 		this.enableTextures(true);
 
-		this.speed=3;
 		this.drawAxis = true;
 
 		this.altimetry= [[ 2.0 , 6.0 , 4.0, 5.0, 10.0, 7.0, 2.3, 1.3 ],
@@ -115,6 +114,9 @@ class LightingScene extends CGFscene
 
 	update(currTime)
 	{
+		//this.car.chassis.camo.setTexture(this.camosList[0][0]);
+		//this.car.chassis.camoWithLogo = this.camosList[this.Appearence][1];
+		//this.car.chassis.camoWithNumber = this.camosList[this.Appearence][2];
 		this.checkKeys(currTime);
 	}
 
@@ -156,23 +158,7 @@ class LightingScene extends CGFscene
 
 		this.ch.display();
 
-		// this.scene.pushMatrix();
-		// this.scene.translate(1, 0.81, 4, 1);
-		//this.try.display();
-		// this.scene.popMatrix();
-		//
-		// this.scene.pushMatrix();
-		// this.scene.translate(5, 0.81, 4, 1);
-		//this.tryN.display();
-		//this.scene.popMatrix();
-
-
 		// ---- END Scene drawing section
-	};
-
-	doSomething()
-	{
-		console.log("Doing something...");
 	};
 
 	checkKeys(currTime)

@@ -36,6 +36,7 @@ class MyInterface extends CGFinterface
             lights.add(this.scene.lights[i], 'enabled').name('Light ' + i);
 
 		this.gui.add(this.scene, 'drawAxis').name("Axis");
+		this.gui.add(this.scene.car.chassis, 'activeCamo', {Russian : 0, American : 1, German : 2});
 
 		this.initKeys();
 

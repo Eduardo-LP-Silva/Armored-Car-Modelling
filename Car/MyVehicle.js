@@ -17,6 +17,7 @@ class MyVehicle extends CGFobject
         this.position = [0, 0, 0];
         this.velocity = 5;
         this.turnAngle = 0;
+
         this.chassis = new MyChassis(scene);
         this.turret = new MyTurret(scene);
         this.support = new MyUnitCubeQuad(scene);
@@ -25,8 +26,11 @@ class MyVehicle extends CGFobject
         this.backWheel = new MyWheel(scene);
         this.light = new MyLamp(scene, 12, 2);
 		this.lamp = new MyLamp(scene, 20, 20, 0.25);
+
         this.metal = new CGFappearance(scene);
         this.metal.loadTexture("../resources/images/darkMetal.jpg");
+				this.farol = new CGFappearance(scene);
+        this.farol.loadTexture("../resources/images/farois.jpg");
     };
 
     display()
@@ -112,6 +116,7 @@ class MyVehicle extends CGFobject
                 this.scene.scale(0.5,0.5,0.5);
                 this.scene.translate(1, 1.5, 10);
                 this.scene.rotate(-Math.PI / 3, 1, 0, 0);
+								this.farol.apply();
                 this.lamp.display();
             this.scene.popMatrix();
 
@@ -120,6 +125,7 @@ class MyVehicle extends CGFobject
                 this.scene.scale(0.5,0.5,0.5);
                 this.scene.translate(-1, 1.5, 10);
                 this.scene.rotate(-Math.PI / 3, 1, 0, 0);
+								this.farol.apply();
                 this.lamp.display();
             this.scene.popMatrix();
 
@@ -129,11 +135,11 @@ class MyVehicle extends CGFobject
     advance(currTime)
     {
         if(this.lastUpdatedTime != -1)
-        {  
+        {
             //this.travelDistance += ((currTime - this.lastUpdatedTime) / 1000) * this.velocity;
 
             var deltaT = ((currTime - this.lastUpdatedTime) / 1000);
-            
+
             this.travelDistanceX += Math.cos(this.turnAngle) * this.velocity * deltaT;
             this.travelDistanceZ -= Math.sin(this.turnAngle) * this.velocity * deltaT;
             this.frontWheel.advance(this.velocity, currTime);
@@ -168,7 +174,7 @@ class MyVehicle extends CGFobject
                 this.turnAngle += 2 / Math.PI  * Math.pow(deltaT, 2) + deltaT;
                 this.frontWheel.turningAngle = Math.PI / 6;
             }
-                
+
         }
 
         this.lastUpdatedTurningTime = currTime;

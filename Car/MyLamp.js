@@ -6,12 +6,16 @@
 
 class MyLamp extends CGFobject
 {
-	constructor(scene, slices, stacks, radius)
+	constructor(scene, slices, stacks, radius, minS = 0, maxS = 1, minT = 0, maxT = 1)
 	{
         super(scene);
         this.slices = slices; //longitude slices
         this.stacks = stacks; //Latitude stacks
         this.radius = radius;
+				this.minS = minS;
+        this.maxS = maxS;
+        this.minT = minT;
+        this.maxT = maxT;
 
 		    this.initBuffers();
 	};
@@ -21,6 +25,7 @@ class MyLamp extends CGFobject
    this.vertices = [];
    this.normals = [];
    this.indices = [];
+	 this.texCoords = [];
 
    this.theta = (Math.PI/2) / this.slices; //i
    this.alpha = 2*Math.PI / this.stacks; //j
@@ -37,7 +42,9 @@ class MyLamp extends CGFobject
 
         this.vertices.push( this.radius*Math.cos(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.sin(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.cos(this.theta*i) );
         this.normals.push( this.radius*Math.cos(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.sin(this.alpha*j)*Math.sin(this.theta*i), this.radius*Math.cos(this.theta*i) );
-     }
+				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.slices,
+						this.minT + j * (this.maxT - this.minT) / this.stacks);
+		 }
    }
 
 	 //Draw triangles

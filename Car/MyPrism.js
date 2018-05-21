@@ -21,7 +21,7 @@ class MyPrism extends CGFobject
 
 	initBuffers()
 	{
-        var i, ang_og;
+        var i, ang_og, j;
 
         this.vertices = [];
         this.indices = [];
@@ -41,9 +41,13 @@ class MyPrism extends CGFobject
                 this.normals.push(Math.cos(ang + ang_og/2), Math.sin(ang +ang_og / 2), 0);
             }
 
-            //this.texCoords.push(this.minS + ang * (this.maxS - this.minS) / this.slices,
+						//for(j=0; j < this.slices; j++)
+						//{
+
+            //this.texCoords.push(this.minS + i*ang * (this.maxS - this.minS) / this.slices,
                 //this.minT + i * (this.maxT - this.minT) / this.stacks);
-        }
+						//}
+				}
 
         for(i = 0; i <= this.stacks * this.slices*2 -2 - this.slices*2; i += 2)
         {
@@ -54,6 +58,13 @@ class MyPrism extends CGFobject
         }
 
 		this.primitiveType=this.scene.gl.TRIANGLES;
+
+		/*this.texCoords = [
+			this.minS, this.maxT,//0,1
+			this.maxS, this.maxT,//1,1,
+			this.minS, this.minT,//0,0,
+			this.maxS, this.minT//1,0
+		];*/
 
 		this.initGLBuffers();
 	};

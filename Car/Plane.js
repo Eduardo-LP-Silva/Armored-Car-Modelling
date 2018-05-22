@@ -47,6 +47,7 @@ class Plane extends CGFobject
 		this.texCoords = [];
 
 		var yCoord = 0.5;
+		var zCoord;
 
 		for (var j = 0; j <= this.nrDivs; j++)
 		{
@@ -57,17 +58,24 @@ class Plane extends CGFobject
 				//var zCoord = this.altimetry[j][i] + this.patchLength;
 
 				if(j != this.nrDivs && i != this.nrDivs)
+				{
 					this.vertices.push(xCoord, yCoord, this.altimetry[j][i] * this.patchLength);
-				else 
+					//zCoord = this.altimetry[j][i] * this.patchLength;
+				}
+				else
+				{
 					this.vertices.push(xCoord, yCoord, 0);
-				
+					//zCoord = 0;
+				}
+
 
 				// As this plane is being drawn on the xy plane, the normal to the plane will be along the positive z axis.
 				// So all the vertices will have the same normal, (0, 0, 1).
 
 				this.normals.push(0,0,1);
+				//calculateNormals();
 
-				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.nrDivs, 
+				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.nrDivs,
 										this.minT + j * (this.maxT - this.minT) / this.nrDivs);
 
 				xCoord += this.patchLength;
@@ -99,7 +107,7 @@ class Plane extends CGFobject
 
 				ind++;
 			}
-			
+
 			if (j+1 < this.nrDivs)
 			{
 				// Extra vertices to create degenerate triangles so that the strip can wrap on the next row
@@ -110,8 +118,48 @@ class Plane extends CGFobject
 		}
 
 		this.primitiveType = this.scene.gl.TRIANGLE_STRIP;
-		
+
 		this.initGLBuffers();
 	};
+
+	calculateNormals()
+	{
+		let count = 0;
+
+		for(let i = 0; i < this.altimetry.length; i++)
+		{
+
+			for(let j = 0; j < this.altimetry[i].length; j++)
+			{
+				let N = this.findNormal(i, j);
+				this.normals[count] = N[0];
+				this.normals[++count] = N[1];
+				this.normals[++count] = N[2];
+				count++;
+			}
+
+		}
+
+	}
+
+	findNormal(x, y)
+	{
+		let hl = this.pHeigth(x-1, y);
+		let hr = this.pHeigth(x+1, y);
+		let hd = this.pHeigth(x, y-1);
+		let hu = this.pHeigth(x, y+1);
+
+		let N = [0, 0, 0];
+		N[0] = hl - hr;
+		N[1] = hd - hu;
+		N[2] = 2.0;
+
+		let length = Math.sqrt((N[0]*N[0]) + (N[1]*N[1]) + (N[2]*N[2]));
+		N[0] = N[0] / length;
+		N[1] = N[1] / length;
+		N[2] = N[2] / length;
+
+		return N;
+	}
 
 };

@@ -1,9 +1,3 @@
-/**
- * MyChassis
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyChassis extends CGFobject
 {
 	constructor(scene)
@@ -16,12 +10,13 @@ class MyChassis extends CGFobject
         this.side =  new MyUnitCubeQuad(scene);
         this.front =  new MyUnitCubeQuad(scene);
         this.back =  new MyUnitCubeQuad(scene);
-        this.trap = new MyPrism (scene, 3, 3);
-        this.tampo = new MyDisk(scene, 3);
+        this.trap = new MyPrism (scene, 3, 3); //Trapezoid
+        this.tampo = new MyDisk(scene, 3); //Trapezoid Sides
         this.roof =  new MyUnitCubeQuad(scene);
-        this.camosList = new Array(3);
-        this.activeCamo = 0;
+        this.camosList = new Array(3); //List of available camoflages
+        this.activeCamo = 0; //Current Active Camoflage
 
+        //Initializing camos list
         for(var i = 0; i < this.camosList.length; i++)
         {
                 this.camosList[i] = new Array(3);
@@ -30,6 +25,7 @@ class MyChassis extends CGFobject
                     this.camosList[i][j] = new CGFappearance(scene);
         }
 
+        //Loading Assets
         this.camosList[0][0].loadTexture("../resources/images/Camo.png");
         this.camosList[0][1].loadTexture("../resources/images/camoWithLogo.png");
         this.camosList[0][2].loadTexture("../resources/images/camoWithNumber.png");
@@ -46,19 +42,20 @@ class MyChassis extends CGFobject
 
     display()
     {
-        //Floor
+        //--------------------Floor----------------------
+
         this.scene.pushMatrix();
-            this.scene.scale(2,0.1,5,1);
+            this.scene.scale(2,0.01,5,1);
             this.underCarriage.apply();
             this.floor.display();
         this.scene.popMatrix();
 
-        //Sides
+        //----------------------Sides---------------------------------
 
         //front left
         this.scene.pushMatrix();
             this.scene.translate(0.85, 0, 0.845, 1);
-            this.scene.scale(0.15, 1.68, 1.66, 1);
+            this.scene.scale(0.15, 1.58, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
             this.camosList[this.activeCamo][0].apply();
             this.side.display();
@@ -67,7 +64,7 @@ class MyChassis extends CGFobject
         //front rigth
         this.scene.pushMatrix();
             this.scene.translate(-1, 0, 0.845, 1);
-            this.scene.scale(0.15, 1.68, 1.66, 1);
+            this.scene.scale(0.15, 1.58, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
             this.camosList[this.activeCamo][0].apply();
             this.side.display();
@@ -76,7 +73,7 @@ class MyChassis extends CGFobject
         //back left
         this.scene.pushMatrix();
             this.scene.translate(0.85, 0, -2.5, 1);
-            this.scene.scale(0.15, 1.68, 1.66, 1);
+            this.scene.scale(0.15, 1.58, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
             this.camosList[this.activeCamo][0].apply();
             this.side.display();
@@ -85,7 +82,7 @@ class MyChassis extends CGFobject
         //back right
         this.scene.pushMatrix();
             this.scene.translate(-1, 0, -2.5, 1);
-            this.scene.scale(0.15, 1.68, 1.66, 1);
+            this.scene.scale(0.15, 1.58, 1.66, 1);
             this.scene.translate(0.5,0.5,0.5,1);
             this.camosList[this.activeCamo][0].apply();
             this.side.display();
@@ -109,7 +106,7 @@ class MyChassis extends CGFobject
             this.side.display();
         this.scene.popMatrix();
 
-        //Trapezoid
+        //-------------------Trapezoid----------------------
         this.scene.pushMatrix();
             this.scene.translate(-1, 0.81, 3, 1);
             this.scene.rotate(Math.PI/3, 1,0,0);
@@ -135,17 +132,17 @@ class MyChassis extends CGFobject
             this.tampo.display();
         this.scene.popMatrix();
 
-        //Back
+        //--------------------------Back---------------------------
         this.scene.pushMatrix();
             this.scene.translate(0, 0, -2.25);
-            this.scene.scale(2, 1.68, 0.01, 1);
+            this.scene.scale(1.7, 1.58, 0.01, 1);
             this.scene.translate(0, 0.5,-24.5, 1);
             this.scene.rotate(Math.PI, 0, 0, 1);
             this.camosList[this.activeCamo][1].apply();
             this.back.display();
         this.scene.popMatrix();
 
-        //Roof
+        //------------------Roof-------------------
         this.scene.pushMatrix()
             this.scene.translate(-1, 1.58, -2.5, 1);
             this.scene.scale(2, 0.1, 5, 1);
@@ -154,5 +151,4 @@ class MyChassis extends CGFobject
             this.roof.display();
         this.scene.popMatrix();
     };
-
 }

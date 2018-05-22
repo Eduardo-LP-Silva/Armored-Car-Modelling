@@ -111,7 +111,7 @@ class LightingScene extends CGFscene
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
-	}
+	};
 
 	update(currTime)
 	{
@@ -119,7 +119,7 @@ class LightingScene extends CGFscene
 		//this.car.chassis.camoWithLogo = this.camosList[this.Appearence][1];
 		//this.car.chassis.camoWithNumber = this.camosList[this.Appearence][2];
 		this.checkKeys(currTime);
-	}
+	};
 
 	display()
 	{
@@ -211,8 +211,5 @@ class LightingScene extends CGFscene
 			}
 			else
 				this.car.lastUpdatedTurningTime = -1;
-
-
 	};
-
 };

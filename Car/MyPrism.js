@@ -1,9 +1,3 @@
-/**
- * MyPrism
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyPrism extends CGFobject
 {
 	constructor(scene, slices, stacks, minS = 0, maxS = 1, minT = 0, maxT = 1)
@@ -11,10 +5,10 @@ class MyPrism extends CGFobject
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-				this.minS = minS;
-				this.maxS = maxS;
-				this.minT = minT;
-				this.maxT = maxT;
+		this.minS = minS;
+		this.maxS = maxS;
+		this.minT = minT;
+		this.maxT = maxT;
 
 		this.initBuffers();
 	};
@@ -26,9 +20,11 @@ class MyPrism extends CGFobject
         this.vertices = [];
         this.indices = [];
         this.normals = [];
-				this.texCoords = [];
+		this.texCoords = [];
 
         ang_og = 2*Math.PI / this.slices;
+
+        // Filling vertices, normals and tex Coords
 
         for(i = 0; i < this.stacks; i++)
         {
@@ -41,15 +37,17 @@ class MyPrism extends CGFobject
                 this.normals.push(Math.cos(ang + ang_og/2), Math.sin(ang +ang_og / 2), 0);
             }
 
-						for(j=0; j < this.slices; j++)
-						{
+			for(j=0; j < this.slices; j++)
+			{
+                this.texCoords.push(this.minS + j * (this.maxS - this.minS) / this.slices, 
+                    this.minT + i * (this.maxT - this.minT) / this.stacks);
 
-            this.texCoords.push(this.minS + j * (this.maxS - this.minS) / this.slices,
-                this.minT + i * (this.maxT - this.minT) / this.stacks);
-								this.texCoords.push(this.minS + j * (this.maxS - this.minS) / this.slices,
-										this.minT + i * (this.maxT - this.minT) / this.stacks);
-						}
-				}
+                this.texCoords.push(this.minS + j * (this.maxS - this.minS) / this.slices, 
+                    this.minT + i * (this.maxT - this.minT) / this.stacks);
+			}
+		}
+
+        // Filling indexes
 
         for(i = 0; i <= this.stacks * this.slices*2 -2 - this.slices*2; i += 2)
         {
@@ -59,15 +57,8 @@ class MyPrism extends CGFobject
             this.indices.push(i + 1, i + this.slices*2 + 1, i + 2);
         }
 
-		this.primitiveType=this.scene.gl.TRIANGLES;
-
-		/*this.texCoords = [
-			this.minS, this.maxT,//0,1
-			this.maxS, this.maxT,//1,1,
-			this.minS, this.minT,//0,0,
-			this.maxS, this.minT//1,0
-		];*/
-
+        this.primitiveType=this.scene.gl.TRIANGLES;
+        
 		this.initGLBuffers();
 	};
 };

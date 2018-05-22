@@ -1,9 +1,3 @@
-/**
- * MyTurret
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyTurret extends CGFobject
 {
 	constructor(scene)
@@ -12,6 +6,7 @@ class MyTurret extends CGFobject
 
         this.base = new MyUnitCubeQuad(scene);
         this.barrel = new MyCylinder(scene, 12, 6);
+
         this.side = new MyUnitCubeQuad(scene);
 
         this.metal = new CGFappearance(scene);
@@ -97,5 +92,4 @@ class MyTurret extends CGFobject
             this.barrel.display();
         this.scene.popMatrix();
     };
-
 }

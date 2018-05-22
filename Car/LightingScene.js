@@ -166,21 +166,31 @@ class LightingScene extends CGFscene
 	
 		if (this.gui.isKeyPressed("KeyW"))
 		{
-			this.car.velocity = 5;
+			if(this.car.lastUpdatedTime == -1)
+				this.car.lastUpdatedTime = currTime;
+
+			this.car.velocity += ((currTime - this.car.lastUpdatedTime) / 1000) * this.car.acceleration;
 
 			this.car.advance(currTime);
 		}
 		else
 			if (this.gui.isKeyPressed("KeyS"))
 			{
-				this.car.velocity = -5;
+				if(this.car.lastUpdatedTime == -1)
+					this.car.lastUpdatedTime = currTime;
+
+				this.car.velocity -= ((currTime - this.car.lastUpdatedTime) / 1000) * this.car.acceleration;
 				
 				this.car.advance(currTime);
 			}
 			else
 			{
-				this.car.lastUpdatedTime = -1;
-				this.car.velocity = 0;
+				//this.car.lastUpdatedTime = -1;
+				
+				//this.car.velocity = 0;
+
+				this.car.advance(currTime);
+
 			}
 				
 
@@ -195,6 +205,8 @@ class LightingScene extends CGFscene
 			}
 			else
 				this.car.lastUpdatedTurningTime = -1;
+
+		
 	};
 
 };

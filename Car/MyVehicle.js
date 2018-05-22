@@ -15,7 +15,8 @@ class MyVehicle extends CGFobject
         this.travelDistanceX = 0;
         this.travelDistanceZ = 0;
         this.position = [0, 0, 0];
-        this.velocity = 5;
+        this.velocity = 0;
+        this.acceleration = 10;
         this.turnAngle = 0;
 
         this.chassis = new MyChassis(scene);
@@ -29,7 +30,8 @@ class MyVehicle extends CGFobject
 
         this.metal = new CGFappearance(scene);
         this.metal.loadTexture("../resources/images/darkMetal.jpg");
-				this.farol = new CGFappearance(scene);
+
+		this.farol = new CGFappearance(scene);
         this.farol.loadTexture("../resources/images/farois.jpg");
     };
 

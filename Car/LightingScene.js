@@ -44,6 +44,7 @@ class LightingScene extends CGFscene
 		this.car = new MyVehicle(this);
 		this.ch = new MyTerrain(this, 8, this.altimetry);
 		this.testWheel = new MyWheel(this);
+		this.crane = new MyCrane(this);
 
 		this.setUpdatePeriod(10);
 	};
@@ -158,12 +159,17 @@ class LightingScene extends CGFscene
 
 		this.ch.display();
 
+		this.pushMatrix();
+			this.translate(0,0,-8);
+			this.crane.display();
+		this.popMatrix();
+
 		// ---- END Scene drawing section
 	};
 
 	checkKeys(currTime)
 	{
-	
+
 		if (this.gui.isKeyPressed("KeyW"))
 		{
 			if(this.car.lastUpdatedTime == -1)
@@ -180,19 +186,19 @@ class LightingScene extends CGFscene
 					this.car.lastUpdatedTime = currTime;
 
 				this.car.velocity -= ((currTime - this.car.lastUpdatedTime) / 1000) * this.car.acceleration;
-				
+
 				this.car.advance(currTime);
 			}
 			else
 			{
 				//this.car.lastUpdatedTime = -1;
-				
+
 				//this.car.velocity = 0;
 
 				this.car.advance(currTime);
 
 			}
-				
+
 
 		if(this.gui.isKeyPressed("KeyA"))
 		{
@@ -206,7 +212,7 @@ class LightingScene extends CGFscene
 			else
 				this.car.lastUpdatedTurningTime = -1;
 
-		
+
 	};
 
 };

@@ -1,9 +1,3 @@
-/**
- * MyWheel
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyWheel extends CGFobject
 {
 	constructor(scene)
@@ -11,6 +5,7 @@ class MyWheel extends CGFobject
         super(scene);
 
         this.axis = new MyDisk(scene, 12);
+
         this.tire = new MyCylinder(scene, 12, 6);
 
         this.wheel = new CGFappearance(scene);
@@ -18,23 +13,20 @@ class MyWheel extends CGFobject
 
 		this.AmbTire = new CGFappearance(scene);
         this.AmbTire.loadTexture("../resources/images/tire.png");
-        
-        this.black = new CGFappearance(scene);
-        this.black.loadTexture("../resources/images/black.png");
 
-        this.lastUpdateTime = -1;
+        this.lastUpdateTime = -1; // Last registered time
         this.radius = 0.5;
-        this.ang = 0;
-        this.turningAngle = 0;
+        this.ang = 0; // Forwards/Backwards movement angle
+        this.turningAngle = 0; // Turning Angle
 
     };
 
     display()
     {
         this.scene.pushMatrix();
-            this.scene.rotate(this.turningAngle, 0, 1, 0);
-            this.scene.rotate(this.ang, 1, 0, 0);
-            this.scene.rotate(Math.PI / 2, 0, 1, 0);
+            this.scene.rotate(this.turningAngle, 0, 1, 0); // Rotate left/right
+            this.scene.rotate(this.ang, 1, 0, 0); // Rotate forwards/backwards
+            this.scene.rotate(Math.PI / 2, 0, 1, 0); // Rotate so the tire will be facing the Z axis
 
             //Tire
             this.scene.pushMatrix();
@@ -61,6 +53,8 @@ class MyWheel extends CGFobject
         this.scene.popMatrix();
     };
 
+    // Rotates forwards/backwards according to car velocity
+    
     advance(velocity, currTime)
     {
         if(this.lastUpdateTime == -1)

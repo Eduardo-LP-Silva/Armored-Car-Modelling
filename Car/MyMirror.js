@@ -41,5 +41,4 @@ class MyMirror extends CGFobject
             this.support.display();
         this.scene.popMatrix();
     };
-
 }

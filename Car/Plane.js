@@ -1,7 +1,8 @@
 
-/** Represents a plane with nrDivs divisions along both axis, with center at (0,0) */
-class Plane extends CGFobject{
+// Represents a plane with nrDivs divisions along both axis, with center at (0,0)
 
+class Plane extends CGFobject
+{
 	constructor(scene, nrDivs, altimetry, minS = 0.0, maxS = 1.0, minT = 0.0, maxT = 1.0)
 	{
 		super(scene);
@@ -43,7 +44,6 @@ class Plane extends CGFobject{
 		this.vertices = [];
 		this.normals = [];
 
-		// Uncomment below to init texCoords
 		this.texCoords = [];
 
 		var yCoord = 0.5;
@@ -57,27 +57,20 @@ class Plane extends CGFobject{
 				//var zCoord = this.altimetry[j][i] + this.patchLength;
 
 				if(j != this.nrDivs && i != this.nrDivs)
-				{
 					this.vertices.push(xCoord, yCoord, this.altimetry[j][i] * this.patchLength);
-					//console.log(this.altimetry[j][i]);
-				}
 				else 
-				{
 					this.vertices.push(xCoord, yCoord, 0);
-				}
+				
 
 				// As this plane is being drawn on the xy plane, the normal to the plane will be along the positive z axis.
 				// So all the vertices will have the same normal, (0, 0, 1).
 
 				this.normals.push(0,0,1);
 
-				// texCoords should be computed here; uncomment and fill the blanks
-
 				this.texCoords.push(this.minS + i * (this.maxS - this.minS) / this.nrDivs, 
 										this.minT + j * (this.maxT - this.minT) / this.nrDivs);
 
 				xCoord += this.patchLength;
-				//zCoord += this.patchLength;
 			}
 
 			yCoord -= this.patchLength;
@@ -96,7 +89,6 @@ class Plane extends CGFobject{
 
 		this.indices = [];
 		var ind=0;
-
 
 		for (var j = 0; j < this.nrDivs; j++)
 		{
@@ -118,24 +110,7 @@ class Plane extends CGFobject{
 		}
 
 		this.primitiveType = this.scene.gl.TRIANGLE_STRIP;
-
-	/* Alternative with TRIANGLES instead of TRIANGLE_STRIP. More indices, but no degenerate triangles */
-	/*
-		for (var j = 0; j < this.nrDivs; j++)
-		{
-			for (var i = 0; i < this.nrDivs; i++)
-			{
-				this.indices.push(ind, ind+this.nrDivs+1, ind+1);
-				this.indices.push(ind+1, ind+this.nrDivs+1, ind+this.nrDivs+2 );
-
-				ind++;
-			}
-			ind++;
-		}
-
-		this.primitiveType = this.scene.gl.TRIANGLES;
-	*/
-
+		
 		this.initGLBuffers();
 	};
 

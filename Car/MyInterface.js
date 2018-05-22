@@ -1,19 +1,10 @@
- 
-class MyInterface extends CGFinterface 
+ class MyInterface extends CGFinterface 
 {
-	/**
-	 * MyInterface
-	 * @constructor
-	 */
-     constructor () 
-     {
+    constructor () 
+    {
  		super();
- 	}
+ 	};
 	
-	/**
-	 * init
-	 * @param {CGFapplication} application
-	 */
     init(application) 
     {
 		// call CGFinterface init
@@ -24,18 +15,22 @@ class MyInterface extends CGFinterface
 
 		this.gui = new dat.GUI();
 
-		// add a group of controls (and open/expand by defult)
+		// Add folder Lights
 
 		var lights = this.gui.addFolder("Luzes");
 		lights.open();
+		
+		// Add checkbox for each light
 
-		// add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
-		// e.g. this.option1=true; this.option2=false;
-        
         for(var i = 0; i < this.scene.lights.length; i++)
             lights.add(this.scene.lights[i], 'enabled').name('Light ' + i);
 
+		// Add checkbox for Axis
+
 		this.gui.add(this.scene, 'drawAxis').name("Axis");
+
+		// Add comboBox for active camouflage / Texture
+		
 		this.gui.add(this.scene.car.chassis, 'activeCamo', {Russian : 0, American : 1, German : 2});
 
 		this.initKeys();

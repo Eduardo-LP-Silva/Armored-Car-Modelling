@@ -12,8 +12,6 @@ serialInclude([
 	'MyCylinder.js',
 	'MyLamp.js',
 	'MyDisk.js',
-	'MyClock.js',
-	'MyClockHand.js',
 	'MyVehicle.js',
 	'MyChassis.js',
 	'MyTurret.js',
@@ -23,7 +21,8 @@ serialInclude([
 	'MyInterface.js',
 	'MyCrane.js',
 
-	main=function() {
+	main=function() 
+	{
 		var app = new CGFapplication(document.body);
 		var myScene = new LightingScene();
 		var myInterface = new MyInterface();
@@ -38,4 +37,4 @@ serialInclude([
 		app.run();
 	}
 
-	]);
+]);

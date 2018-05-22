@@ -110,7 +110,7 @@ class LightingScene extends CGFscene
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
-	}
+	};
 
 	update(currTime)
 	{
@@ -118,7 +118,7 @@ class LightingScene extends CGFscene
 		//this.car.chassis.camoWithLogo = this.camosList[this.Appearence][1];
 		//this.car.chassis.camoWithNumber = this.camosList[this.Appearence][2];
 		this.checkKeys(currTime);
-	}
+	};
 
 	display()
 	{
@@ -178,7 +178,7 @@ class LightingScene extends CGFscene
 			{
 				if(this.car.lastUpdatedTime == -1)
 					this.car.lastUpdatedTime = currTime;
-
+				
 				this.car.velocity -= ((currTime - this.car.lastUpdatedTime) / 1000) * this.car.acceleration;
 				
 				this.car.advance(currTime);
@@ -204,9 +204,6 @@ class LightingScene extends CGFscene
 				this.car.turn(currTime, true);
 			}
 			else
-				this.car.lastUpdatedTurningTime = -1;
-
-		
+				this.car.lastUpdatedTurningTime = -1;		
 	};
-
 };

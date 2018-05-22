@@ -1,9 +1,3 @@
-/**
- * MyCylinder
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyDisk extends CGFobject
 {
 	constructor(scene, slices, minS = 0, maxS = 1, minT = 0, maxT = 1) 
@@ -15,7 +9,6 @@ class MyDisk extends CGFobject
         this.minT = minT;
         this.maxT = maxT;
     
-
 		this.initBuffers();
 	};
 
@@ -32,6 +25,8 @@ class MyDisk extends CGFobject
         var i, j, k, x, y;
         var n_vertices = 0;
         
+        //Filling vertices, normals and texCoords
+
         for(j = 0; j < this.slices; j++)
         {
             x = Math.cos(j * ang);
@@ -48,7 +43,8 @@ class MyDisk extends CGFobject
         this.texCoords.push(0.5,0.5);
         n_vertices++;
       
-
+        //Filling indexes
+        
         for(i = 0; i < n_vertices - 1; i++)
         {
             this.indices.push(n_vertices - 1);

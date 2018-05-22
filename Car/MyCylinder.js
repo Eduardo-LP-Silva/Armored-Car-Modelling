@@ -1,9 +1,3 @@
-/**
- * MyCylinder
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyCylinder extends CGFobject
 {
 	constructor(scene, slices, stacks, minS = 0, maxS = 1, minT = 0, maxT = 1)
@@ -32,6 +26,8 @@ class MyCylinder extends CGFobject
         var ang = 2*Math.PI / this.slices;
         var i, j;
 
+        //Filling Vertices, normals and texCoords
+        
         for(i = 0; i < this.stacks; i++)
         {
             for(j = 0; j < this.slices; j++)
@@ -44,6 +40,8 @@ class MyCylinder extends CGFobject
             }
         }
 
+        //Filling Indexs
+
         for(i = 0; i <= this.stacks * this.slices -1 - this.slices; i++)
         {
             this.indices.push(i, i + this.slices, i + this.slices - 1);
@@ -53,7 +51,6 @@ class MyCylinder extends CGFobject
         }
 
 		this.primitiveType=this.scene.gl.TRIANGLES;
-
 
 		this.initGLBuffers();
 	};

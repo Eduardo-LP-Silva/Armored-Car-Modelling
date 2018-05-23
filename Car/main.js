@@ -21,6 +21,7 @@ serialInclude([
 	'MyInterface.js',
 	'MyCrane.js',
 	'MyCraneArm.js',
+	'MyMagnet.js',
 
 	main=function() 
 	{

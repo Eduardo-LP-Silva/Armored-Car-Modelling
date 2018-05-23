@@ -7,12 +7,15 @@ class MyCraneArm extends CGFobject
 		this.tampo = new MyDisk(scene, 12);
         this.manga = new MyUnitCubeQuad(scene);
         this.cyl = new MyCylinder(scene, 12, 3);
+        this.magnet = new MyMagnet(scene);
 
    		this.texCrane = new CGFappearance(scene);
 		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
 		
 		this.lastUpdatedElevationTime = -1;
-		this.elevationAngle = 0;
+        this.elevationAngle = 0;
+        this.wireMovementY = 0;
+        this.wireMovementX = -5;
     };
 
     display()
@@ -64,7 +67,14 @@ class MyCraneArm extends CGFobject
 				this.manga.display();
 			this.scene.popMatrix();
 
-		this.scene.popMatrix();
+        this.scene.popMatrix();
+        
+        this.scene.pushMatrix();
+            this.scene.translate(5,0,0);
+            this.scene.translate(this.wireMovementX,this.wireMovementY, 0);
+            this.scene.translate(-5, 10.5,0);
+            this.magnet.display();
+        this.scene.popMatrix();
     };
 
     elevate(currTime, up)
@@ -81,8 +91,20 @@ class MyCraneArm extends CGFobject
             {
                 this.elevationAngle += 2 / Math.PI  * Math.pow(deltaT, 2) + deltaT;
             }
+
+            this.wireMovementX = -5 * Math.cos(this.elevationAngle);
+            this.wireMovementY = -5 * Math.sin(this.elevationAngle);
+
+            /*
+            if(Math.abs(this.wireMovementX) > 5)
+                this.wireMovementX = 5;
+
+            if(Math.abs(this.wireMovementY) > 5)
+                this.wireMovementY = 5; */
+
+            //console.log(this.wireMovementY);
 		}
 
-		this.lastUpdatedElevationTime = currTime;
+        this.lastUpdatedElevationTime = currTime;
 	};
 }

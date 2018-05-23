@@ -16,7 +16,6 @@ class MyCrane extends CGFobject
 		this.lastUpdatedElevationTime = -1;
 		this.turnAngle = 0;
 		this.elevationAngle = 0;
-		this.wireMovementY = 6;
     };
 
     display()
@@ -57,48 +56,6 @@ class MyCrane extends CGFobject
 			this.scene.popMatrix();
 
 			this.smallerArm.display();
-
-			//---------------Fio---------------------
-
-			this.scene.pushMatrix();
-				this.scene.translate(-5,this.wireMovementY,0);
-				//this.scene.translate(-6,2.8,12);
-				this.scene.scale(0.1, 2, 0.1);
-				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
-				this.cyl.display();
-			this.scene.popMatrix();
-
-			//--------------Iman------------------------
-
-			//base
-			this.scene.pushMatrix();
-				this.scene.translate(-5,5.6,0);	
-				//this.scene.translate(-6,2.4,12);
-				this.scene.scale(1, 0.2, 1);
-				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
-				this.cyl.display();
-			this.scene.popMatrix();
-
-			//tampos
-			this.scene.pushMatrix();
-				this.scene.translate(-5,5.6,0);
-				//this.scene.translate(-6,2.4,12);
-				this.scene.scale(1, 0.2, 1);
-				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
-				this.tampo.display();
-			this.scene.popMatrix();
-
-			this.scene.pushMatrix();
-				this.scene.translate(-5,6,0);
-				//this.scene.translate(-6,2.8,12);
-				this.scene.scale(1, 0.2, 1);
-				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
-				this.tampo.display();
-			this.scene.popMatrix();
 
 		this.scene.popMatrix();
 	};

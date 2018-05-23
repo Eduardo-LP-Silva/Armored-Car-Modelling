@@ -221,5 +221,17 @@ class LightingScene extends CGFscene
 			}
 			else
 				this.crane.lastUpdatedTurningTime = -1;
+
+		if(this.gui.isKeyPressed("KeyI"))
+		{
+			this.crane.smallerArm.elevate(currTime, true);
+		}
+		else
+			if(this.gui.isKeyPressed("KeyK"))
+			{
+				this.crane.smallerArm.elevate(currTime, false);
+			}
+			else
+				this.crane.smallerArm.lastUpdatedElevationTime = -1;
 	};
 };

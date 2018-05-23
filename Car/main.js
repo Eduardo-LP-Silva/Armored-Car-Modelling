@@ -20,6 +20,7 @@ serialInclude([
 	'MyTerrain.js',
 	'MyInterface.js',
 	'MyCrane.js',
+	'MyCraneArm.js',
 
 	main=function() 
 	{

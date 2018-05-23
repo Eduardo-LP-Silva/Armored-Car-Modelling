@@ -7,12 +7,16 @@ class MyCrane extends CGFobject
 		this.tampo = new MyDisk(scene, 12);
 		this.cyl = new MyCylinder(scene, 12, 3);
 		this.manga = new MyUnitCubeQuad(scene);
+		this.smallerArm = new MyCraneArm(scene);
 
    		this.texCrane = new CGFappearance(scene);
 		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
 		
 		this.lastUpdatedTurningTime = -1;
+		this.lastUpdatedElevationTime = -1;
 		this.turnAngle = 0;
+		this.elevationAngle = 0;
+		this.wireMovementY = 6;
     };
 
     display()
@@ -21,7 +25,7 @@ class MyCrane extends CGFobject
 
 			this.scene.rotate(this.turnAngle, 0, 1, 0);
 
-			//cilindro base
+			//------------cilindro base-----------------
 
 			//base
 			this.scene.pushMatrix();
@@ -42,7 +46,7 @@ class MyCrane extends CGFobject
 				this.tampo.display();
 			this.scene.popMatrix();
 			
-			//manga maior
+			//---------------manga maior--------------------
 			this.scene.pushMatrix();
 				this.scene.translate(0,5.301,0);
 				//this.scene.translate(0,0.71,12);
@@ -52,50 +56,12 @@ class MyCrane extends CGFobject
 				this.manga.display();
 			this.scene.popMatrix();
 
-			//cilindro superior
-			
-			//base
-			this.scene.pushMatrix();
-				this.scene.translate(0,10.5, -0.5);
-				//this.scene.translate(0,10,11.5);
-				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
-				this.cyl.display();
-			this.scene.popMatrix();
+			this.smallerArm.display();
 
-			//tampos
-			this.scene.pushMatrix();
-				this.scene.translate(0,10.5,-0.5);
-				//this.scene.translate(0,10,11.5);
-				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
-				this.tampo.display();
-			this.scene.popMatrix();
+			//---------------Fio---------------------
 
 			this.scene.pushMatrix();
-				this.scene.translate(0,10.5,0.5);
-				//this.scene.translate(0,10,12.5);
-				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
-				this.tampo.display();
-			this.scene.popMatrix();
-			
-			//manga menor
-			this.scene.pushMatrix();
-				this.scene.translate(1.6,10,0);
-				//this.scene.translate(0,10,12);
-				//this.scene.rotate(-Math.PI/2, 0, 1, 0);
-				//this.scene.rotate(Math.PI/4, 0, 0, 1);
-				this.scene.translate(-4.5,0,0);
-				this.scene.scale(4.5, 0.9, 0.9);
-				this.scene.translate(0,0.5,0);
-				this.texCrane.apply();
-				this.manga.display();
-			this.scene.popMatrix();
-
-			//Fio
-			this.scene.pushMatrix();
-				this.scene.translate(-5,6,0);
+				this.scene.translate(-5,this.wireMovementY,0);
 				//this.scene.translate(-6,2.8,12);
 				this.scene.scale(0.1, 2, 0.1);
 				this.scene.rotate(-Math.PI/2, 1, 0, 0);
@@ -103,7 +69,7 @@ class MyCrane extends CGFobject
 				this.cyl.display();
 			this.scene.popMatrix();
 
-			//Iman
+			//--------------Iman------------------------
 
 			//base
 			this.scene.pushMatrix();
@@ -154,5 +120,5 @@ class MyCrane extends CGFobject
 		}
 
 		this.lastUpdatedTurningTime = currTime;
-	}
+	};
 }

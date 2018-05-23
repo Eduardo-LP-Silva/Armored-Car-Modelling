@@ -159,10 +159,8 @@ class LightingScene extends CGFscene
 
 		this.ch.display();
 
-		this.pushMatrix();
-			this.translate(0,0,-8);
-			this.crane.display();
-		this.popMatrix();
+		this.crane.display();
+		
 
 		// ---- END Scene drawing section
 	};
@@ -211,5 +209,17 @@ class LightingScene extends CGFscene
 			}
 			else
 				this.car.lastUpdatedTurningTime = -1;
+
+		if(this.gui.isKeyPressed("KeyL"))
+		{
+			this.crane.turn(currTime, true);
+		}
+		else
+			if(this.gui.isKeyPressed("KeyJ"))
+			{
+				this.crane.turn(currTime, false);
+			}
+			else
+				this.crane.lastUpdatedTurningTime = -1;
 	};
 };

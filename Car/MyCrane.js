@@ -23,6 +23,7 @@ class MyCrane extends CGFobject
 		this.scene.pushMatrix();
 
 			this.scene.rotate(this.turnAngle, 0, 1, 0);
+			this.scene.rotate(Math.PI, 0, 1, 0);
 
 			//------------cilindro base-----------------
 
@@ -47,15 +48,20 @@ class MyCrane extends CGFobject
 			
 			//---------------manga maior--------------------
 			this.scene.pushMatrix();
-				this.scene.translate(0,5.301,0);
+				this.scene.translate(0,0.6,0);
 				//this.scene.translate(0,0.71,12);
+				this.scene.rotate(Math.PI / 5, 0, 0, 1);
+				this.scene.translate(0, 4.5, 0);
 				this.scene.scale(0.9, 9, 0.9);
 				//this.scene.rotate(-Math.PI/2, 1, 0, 0);
 				this.texCrane.apply();
 				this.manga.display();
 			this.scene.popMatrix();
 
-			this.smallerArm.display();
+			this.scene.pushMatrix();
+				this.scene.translate(-5.7,-2.2,0);
+				this.smallerArm.display();
+			this.scene.popMatrix();
 
 		this.scene.popMatrix();
 	};

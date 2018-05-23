@@ -189,13 +189,10 @@ class LightingScene extends CGFscene
 			}
 			else
 			{
-				//this.car.lastUpdatedTime = -1;
-
-				//this.car.velocity = 0;
-
 				this.car.advance(currTime);
-
 			}
+
+			//console.log(this.car.travelDistanceX + "\n" + this.car.travelDistanceZ);
 
 
 		if(this.gui.isKeyPressed("KeyA"))

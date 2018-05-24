@@ -11,6 +11,8 @@ class MyVehicle extends CGFobject
         this.velocity = 0; 
         this.acceleration = 10;
         this.turnAngle = 0; // Turning angle
+        this.block = false; // Flag to block car
+        this.magnetize = false; // Flag to make car 'Disappear'/avoid display
 
         this.chassis = new MyChassis(scene);
         this.turret = new MyTurret(scene);
@@ -30,7 +32,6 @@ class MyVehicle extends CGFobject
 
     display()
     {
-
         this.scene.pushMatrix();
         this.scene.translate(this.travelDistanceX, 0, this.travelDistanceZ); // Move
         this.scene.rotate(this.turnAngle, 0, 1, 0); // Turn

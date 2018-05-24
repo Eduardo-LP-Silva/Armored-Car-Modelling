@@ -13,9 +13,9 @@ class MyCrane extends CGFobject
 		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
 		
 		this.lastUpdatedTurningTime = -1;
-		this.lastUpdatedElevationTime = -1;
 		this.turnAngle = 0;
 		this.elevationAngle = 0;
+		this.state = "D-UP";
     };
 
     display()
@@ -61,7 +61,7 @@ class MyCrane extends CGFobject
 			this.scene.pushMatrix();
 				this.scene.translate(-5.7,-2.2,0);
 				this.smallerArm.display();
-			this.scene.popMatrix();
+			this.scene.popMatrix();	
 
 		this.scene.popMatrix();
 	};

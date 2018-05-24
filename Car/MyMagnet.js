@@ -7,6 +7,9 @@ class MyMagnet extends CGFobject
 		this.tampo = new MyDisk(scene, 12);
         this.manga = new MyUnitCubeQuad(scene);
         this.cyl = new MyCylinder(scene, 12, 3);
+        this.car = new MyVehicle(scene);
+        
+        this.showCar = false;
 
    		this.texCrane = new CGFappearance(scene);
 		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
@@ -60,6 +63,17 @@ class MyMagnet extends CGFobject
                 this.texCrane.apply();
                 this.tampo.display();
             this.scene.popMatrix();
+
+            if(this.showCar)
+            {
+                this.scene.pushMatrix();
+                    this.scene.translate(13.5, -1.9, 3);
+                    //this.scene.rotate(Math.PI / 2, 0, 1, 0);
+                    this.car.display();
+                this.scene.popMatrix();
+            }
+
+            
 
 		this.scene.popMatrix();
     };

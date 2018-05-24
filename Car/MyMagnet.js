@@ -10,9 +10,12 @@ class MyMagnet extends CGFobject
         this.car = new MyVehicle(scene);
         
         this.showCar = false;
-
-   		this.texCrane = new CGFappearance(scene);
-		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
+        
+        this.metal = new CGFappearance(scene);
+        this.metal.loadTexture("../resources/images/metal.png");
+        
+        this.rope = new CGFappearance(scene);
+		this.rope.loadTexture("../resources/images/rope.png");
     };
 
     display()
@@ -24,12 +27,9 @@ class MyMagnet extends CGFobject
             //---------------Fio---------------------
 
             this.scene.pushMatrix();
-                //this.scene.translate(-5, 6,0);
-                //this.scene.translate(-5, 6,0);
-                //this.scene.translate(-6,2.8,12);
                 this.scene.scale(0.1, 2, 0.1);
                 this.scene.rotate(-Math.PI/2, 1, 0, 0);
-                this.texCrane.apply();
+                this.rope.apply();
                 this.cyl.display();
             this.scene.popMatrix();
 
@@ -37,30 +37,25 @@ class MyMagnet extends CGFobject
 
 			//base
 			this.scene.pushMatrix();
-                //this.scene.translate(-5,5.6,0);	
-                //this.scene.translate(-6,2.4,12);
                 this.scene.scale(1, 0.2, 1);
                 this.scene.rotate(-Math.PI/2, 1, 0, 0);
-                this.texCrane.apply();
+                this.metal.apply();
                 this.cyl.display();
             this.scene.popMatrix();
 
             //tampos
             this.scene.pushMatrix();
-                //this.scene.translate(-5,5.6,0);
-                //this.scene.translate(-6,2.4,12);
                 this.scene.scale(1, 0.2, 1);
                 this.scene.rotate(-Math.PI/2, 1, 0, 0);
-                this.texCrane.apply();
+                this.metal.apply();
                 this.tampo.display();
             this.scene.popMatrix();
 
             this.scene.pushMatrix();
                 this.scene.translate(0,0.4,0);
-                //this.scene.translate(-6,2.8,12);
                 this.scene.scale(1, 0.2, 1);
                 this.scene.rotate(-Math.PI/2, 1, 0, 0);
-                this.texCrane.apply();
+                this.metal.apply();
                 this.tampo.display();
             this.scene.popMatrix();
 
@@ -68,12 +63,9 @@ class MyMagnet extends CGFobject
             {
                 this.scene.pushMatrix();
                     this.scene.translate(13.5, -1.9, 3);
-                    //this.scene.rotate(Math.PI / 2, 0, 1, 0);
                     this.car.display();
                 this.scene.popMatrix();
             }
-
-            
 
 		this.scene.popMatrix();
     };

@@ -10,7 +10,10 @@ class MyCraneArm extends CGFobject
         this.magnet = new MyMagnet(scene);
 
    		this.texCrane = new CGFappearance(scene);
-		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
+        this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
+        
+        this.metal = new CGFappearance(scene);
+		this.metal.loadTexture("../resources/images/metal.png");
 		
 		this.lastUpdatedElevationTime = -1;
         this.elevationAngle = 0;
@@ -30,26 +33,23 @@ class MyCraneArm extends CGFobject
 			//base
 			this.scene.pushMatrix();
 				this.scene.translate(0,10.5, -0.5);
-				//this.scene.translate(0,10,11.5);
 				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
+				this.metal.apply();
 				this.cyl.display();
 			this.scene.popMatrix();
 
 			//tampos
 			this.scene.pushMatrix();
 				this.scene.translate(0,10.5,-0.5);
-				//this.scene.translate(0,10,11.5);
 				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
+				this.metal.apply();
 				this.tampo.display();
 			this.scene.popMatrix();
 
 			this.scene.pushMatrix();
 				this.scene.translate(0,10.5,0.5);
-				//this.scene.translate(0,10,12.5);
 				this.scene.scale(0.7, 0.7, 0.5);
-				this.texCrane.apply();
+				this.metal.apply();
 				this.tampo.display();
 			this.scene.popMatrix();
 			
@@ -57,9 +57,6 @@ class MyCraneArm extends CGFobject
 
 			this.scene.pushMatrix();
 				this.scene.translate(-0.7,10.5,0);
-				//this.scene.translate(0,10,12);
-				//this.scene.rotate(-Math.PI/2, 0, 1, 0);
-				//this.scene.rotate(this.elevationAngle, 0, 0, 1);
 				this.scene.translate(-2.2,-0.5,0);
 				this.scene.scale(4.5, 0.9, 0.9);
 				this.scene.translate(0,0.5,0);
@@ -94,15 +91,6 @@ class MyCraneArm extends CGFobject
 
             this.wireMovementX = -5 * Math.cos(this.elevationAngle);
             this.wireMovementY = -5 * Math.sin(this.elevationAngle);
-
-            /*
-            if(Math.abs(this.wireMovementX) > 5)
-                this.wireMovementX = 5;
-
-            if(Math.abs(this.wireMovementY) > 5)
-                this.wireMovementY = 5; */
-
-            //console.log(this.wireMovementY);
 		}
 
         this.lastUpdatedElevationTime = currTime;

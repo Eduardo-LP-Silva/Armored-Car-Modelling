@@ -11,6 +11,9 @@ class MyCrane extends CGFobject
 
    		this.texCrane = new CGFappearance(scene);
 		this.texCrane.loadTexture("../resources/images/darkRustedMetal.png");
+
+		this.metal = new CGFappearance(scene);
+		this.metal.loadTexture("../resources/images/metal.png");
 		
 		this.lastUpdatedTurningTime = -1;
 		this.turnAngle = 0;
@@ -29,31 +32,28 @@ class MyCrane extends CGFobject
 
 			//base
 			this.scene.pushMatrix();
-				//this.scene.translate(0,-0.09,12);
 				this.scene.scale(1, 0.4, 1);
 				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
+				this.metal.apply();
 				this.cyl.display();
 			this.scene.popMatrix();
 
 			//tampo
 			this.scene.pushMatrix();
 				this.scene.translate(0,0.8,0);
-				//this.scene.translate(0,0.71,12);
 				this.scene.scale(1, 0.4, 1);
 				this.scene.rotate(-Math.PI/2, 1, 0, 0);
-				this.texCrane.apply();
+				this.metal.apply();
 				this.tampo.display();
 			this.scene.popMatrix();
 			
 			//---------------manga maior--------------------
+			
 			this.scene.pushMatrix();
 				this.scene.translate(0,0.6,0);
-				//this.scene.translate(0,0.71,12);
 				this.scene.rotate(Math.PI / 5, 0, 0, 1);
 				this.scene.translate(0, 4.5, 0);
 				this.scene.scale(0.9, 9, 0.9);
-				//this.scene.rotate(-Math.PI/2, 1, 0, 0);
 				this.texCrane.apply();
 				this.manga.display();
 			this.scene.popMatrix();

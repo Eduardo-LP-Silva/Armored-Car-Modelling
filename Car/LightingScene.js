@@ -320,8 +320,6 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		this.crane.display();
-		
-
 		// ---- END Scene drawing section
 	};
 
@@ -371,7 +369,10 @@ class LightingScene extends CGFscene
 				this.car.turn(currTime, true);
 			}
 			else
+			{
 				this.car.lastUpdatedTurningTime = -1;
+			}
+				
 
 		/*
 		if(this.gui.isKeyPressed("KeyL"))

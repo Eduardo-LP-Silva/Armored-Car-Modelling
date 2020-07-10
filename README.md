@@ -45,9 +45,3 @@ In the scene is also present a magnetic crane. If the user drives the car to the
 within the boundaries), the crane will pick up the car and drop it on the other side.
 
 ![cgfimage-tp6-t4g04-7 3](https://user-images.githubusercontent.com/32617691/42231628-f6948fb6-7ee3-11e8-99dc-fa5151c92ca7.png)
-
-## Usage
-
-This project only works in browsers with WebGL support (Chrome, Firefox, ...). You'll also need an http server such as Mongoose
- https://cesanta.com/binary.html. In this case, after downloading the project, put the server executable in the main folder and run it.
- Proceed to select the Car folder in the browser and it should start automatically.

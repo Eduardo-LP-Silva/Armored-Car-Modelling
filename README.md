@@ -1,5 +1,5 @@
 # Armored-Car-Modelling
-This repository contains the final project developed during the Computer Graphics (CGRA) course unit. It consists of a model of an 
+WebGL model of an 
 armored car controllable by the user, among other things.
 
 ## Features
